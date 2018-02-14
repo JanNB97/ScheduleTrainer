@@ -10,6 +10,11 @@ public class TaskGrid
     public TaskGrid(TaskSystem...taskSystems)
     {
         allTaskSystems = Arrays.asList(taskSystems);
+
+        for(int i = 0; i < taskSystems.length; i++)
+        {
+            assert taskSystems[i].getZeitschritt() == i + 1;
+        }
     }
 
     public TaskSystem getTaskSystem(int index)
@@ -17,10 +22,12 @@ public class TaskGrid
         return allTaskSystems.get(index);
     }
 
-    protected List<TaskSystem> getAllTaskSystems()
+    public List<TaskSystem> getAllTaskSystems()
     {
         return allTaskSystems;
     }
+
+
 
     @Override
     public String toString()

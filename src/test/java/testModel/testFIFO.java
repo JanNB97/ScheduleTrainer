@@ -9,10 +9,13 @@ import model.tasks.TaskSystem;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class testFIFO
 {
     @Test
-    public void test()
+    public void gridTest()
     {
         Task A = new Task('A', 1, 5, 1);
         Task B = new Task('B', 0, 3, 1);
@@ -25,9 +28,9 @@ public class testFIFO
         ScheduleAlgorithmExecutor executor = new ScheduleAlgorithmExecutor(fifo);
 
         Assert.assertEquals(new TaskGrid(
-                new TaskSystem(1, B, F, A),
-                new TaskSystem(2, B, F, A, D, E),
-                new TaskSystem(3, B, F, A, D, E, C),
+                new TaskSystem(1, B, F),
+                new TaskSystem(2, B, F, A),
+                new TaskSystem(3, B, F, A, D, E),
                 new TaskSystem(4, F, A, D, E, C),
                 new TaskSystem(5, A, D, E, C),
                 new TaskSystem(6, A, D, E, C),
@@ -43,5 +46,17 @@ public class testFIFO
                 new TaskSystem(16, C)),
 
                 executor.getTaskGrid());
+
+        Assert.assertEquals(10, executor.getMaxWaitTime());
+        Assert.assertEquals(13, executor.getMaxResponseTime());
+
+        Assert.assertEquals(roundTwo(5.5f), roundTwo(executor.getAverageWaitTime()));
+        Assert.assertEquals(roundTwo(2.67f), roundTwo(executor.getAverageTime()));
+        Assert.assertEquals(roundTwo(8.17f), roundTwo(executor.getAverageResponseTime()));
+    }
+
+    public int roundTwo(float f)
+    {
+        return Math.round(f * 100);
     }
 }

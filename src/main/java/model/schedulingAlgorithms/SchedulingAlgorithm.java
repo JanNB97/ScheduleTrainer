@@ -24,18 +24,11 @@ public abstract class SchedulingAlgorithm
         this.name = name;
         this.withInterupts = withInterupts;
         allTasks = Arrays.asList(tasks);
-
-        start();
-    }
-
-    private void start()
-    {
-        putTasksInQueue(getNewTasks(0));
     }
 
     public void doZeitschritt()
     {
-        zeitSchritt++;
+        putTasksInQueue(getNewTasks(zeitSchritt));
 
         if(processing == null)
         {
@@ -64,7 +57,7 @@ public abstract class SchedulingAlgorithm
             processing.calculates(1);
         }
 
-        putTasksInQueue(getNewTasks(zeitSchritt));
+        zeitSchritt++;
     }
 
     private void putNewProcessingTask()
@@ -105,6 +98,12 @@ public abstract class SchedulingAlgorithm
     abstract boolean shouldInterrupt();
 
     //-----------------------Getter---------------------------
+
+
+    public List<Task> getAllTasks()
+    {
+        return allTasks;
+    }
 
     public TaskSystem getTaskSystem()
     {

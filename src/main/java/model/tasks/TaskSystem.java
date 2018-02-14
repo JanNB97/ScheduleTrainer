@@ -2,6 +2,7 @@ package model.tasks;
 
 import model.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,6 +11,8 @@ public class TaskSystem
     private List<Task> waiting;
     private Task processing;
 
+    private List<Character> allTaskIDs;
+
     int zeitschritt;
 
     public TaskSystem(int zeitschritt, Task processing, Task...waiting)
@@ -17,6 +20,18 @@ public class TaskSystem
         this.waiting = Arrays.asList(waiting);
         this.processing = processing;
         this.zeitschritt = zeitschritt;
+
+        allTaskIDs = new ArrayList<>();
+
+        if(processing != null)
+        {
+            allTaskIDs.add(processing.getID());
+        }
+
+        for(Task task : waiting)
+        {
+            allTaskIDs.add(task.getID());
+        }
     }
 
     public List<Task> getWaiting()
@@ -32,6 +47,11 @@ public class TaskSystem
     public int getZeitschritt()
     {
         return zeitschritt;
+    }
+
+    public List<Character> getAllTaskIDs()
+    {
+        return allTaskIDs;
     }
 
     //----------------------Overritten methods----------------
