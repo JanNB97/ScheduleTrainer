@@ -152,6 +152,6 @@ public class ScheduleAlgorithmExecutor
     @Override
     public String toString()
     {
-        return taskGrid.toString();
+        return algorithm.getName() + "\n" + taskGrid.toString();
     }
 }

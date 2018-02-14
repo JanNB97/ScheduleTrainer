@@ -109,4 +109,9 @@ public abstract class SchedulingAlgorithm
     {
         return new TaskSystem(zeitSchritt, processing, (Task[])waiting.getTaskQueue().toArray(new Task[waiting.getTaskQueue().size()]));
     }
+
+    public String getName()
+    {
+        return name;
+    }
 }
