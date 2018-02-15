@@ -49,6 +49,11 @@ public class TaskGrid
         {
             TaskGrid o = (TaskGrid)obj;
 
+            if(getAllTaskSystems().size() != o.getAllTaskSystems().size())
+            {
+                return false;
+            }
+
             for(int i = 0; i < allTaskSystems.size(); i++)
             {
                 if(getTaskSystem(i).equals(o.getTaskSystem(i)) == false)

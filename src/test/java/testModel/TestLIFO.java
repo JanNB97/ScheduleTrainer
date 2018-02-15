@@ -24,10 +24,24 @@ public class TestLIFO
 
         SchedulingAlgorithm lifo = new LIFO(A,B,C,D,E,F);
 
-        //TODO
-        /*
         TestSchedulingAlgorithm.testAll(lifo, new TaskGrid(
-                new TaskSystem()
-        ));*/
+                new TaskSystem(1, F, B),
+                new TaskSystem(2, F, E, B),
+                new TaskSystem(3, D, A, E, B),
+                new TaskSystem(4, D, A, E, B),
+                new TaskSystem(5, C, A, E, B),
+                new TaskSystem(6, C, A, E, B),
+                new TaskSystem(7, C, A, E, B),
+                new TaskSystem(8, C, A, E, B),
+                new TaskSystem(9, A, E, B),
+                new TaskSystem(10, E, B),
+                new TaskSystem(11, E, B),
+                new TaskSystem(12, E, B),
+                new TaskSystem(13, E, B),
+                new TaskSystem(14, B),
+                new TaskSystem(15, B),
+                new TaskSystem(16, B)
+
+        ),13,16,4.5f,2.67f,7.17f);
     }
 }

@@ -28,30 +28,24 @@ public abstract class SchedulingAlgorithm
 
     public void doZeitschritt()
     {
+        //FIRST NEW TASKS
         putTasksInQueue(getNewTasks(zeitSchritt));
 
-        if(processing == null)
+        //SECOND INTERRUPTED TASKS
+        if(processing != null && processing.isFinished() == false
+                && withInterupts && shouldInterrupt())
         {
-            //No task is processing
-            putNewProcessingTask();
-        }
-        else
-        {
-            //Task is processing
-            if(processing.isFinished())
-            {
-                putNewProcessingTask();
-            }
-            else
-            {
-                if(withInterupts && shouldInterrupt())
-                {
-                    putTasksInQueue(Arrays.asList(processing));
-                    putNewProcessingTask();
-                }
-            }
+            putTasksInQueue(Arrays.asList(processing));
+            processing = null;
         }
 
+        //THIRD NEW PROCESSING TASK
+        if(processing == null || processing.isFinished())
+        {
+            putNewProcessingTask();
+        }
+
+        //FORTH CALCULATING
         if(processing != null)
         {
             processing.calculates(1);
@@ -63,6 +57,12 @@ public abstract class SchedulingAlgorithm
     private void putNewProcessingTask()
     {
         processing = waiting.getNewProcessingTask();
+        newProcessingTask();
+    }
+
+    protected void newProcessingTask()
+    {
+
     }
 
     private List<Task> getNewTasks(int zeitSchritt)
@@ -97,8 +97,9 @@ public abstract class SchedulingAlgorithm
 
     abstract boolean shouldInterrupt();
 
-    //-----------------------Getter---------------------------
 
+
+    //-----------------------Getter---------------------------
 
     public List<Task> getAllTasks()
     {

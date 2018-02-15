@@ -7,6 +7,7 @@ import model.schedulingAlgorithms.SchedulingAlgorithm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ScheduleAlgorithmExecutor
 {
@@ -38,7 +39,14 @@ public class ScheduleAlgorithmExecutor
 
     public float getAverageWaitTime()
     {
-        return getAverageResponseTime() - getAverageTime();
+        int wGes = 0;
+
+        for(Task task : allTasks)
+        {
+            wGes += getWaitTime(task);
+        }
+
+        return (float)wGes / allTasks.size();
     }
 
     public float getAverageTime()
@@ -69,7 +77,28 @@ public class ScheduleAlgorithmExecutor
 
     public int getWaitTime(Task task)
     {
-        return getResponseTime(task) - task.getRechenzeit();
+        return getFirstProcessingTime(task) - task.getEintrittszeit() - 1;
+    }
+
+    private int getFirstProcessingTime(Task task)
+    {
+        if(allTasks.contains(task) == false)
+        {
+            Logger.getGlobal().severe("No such task found");
+            return -1;
+        }
+
+        for(int i = task.getEintrittszeit(); i < taskGrid.getAllTaskSystems().size(); i++)
+        {
+            TaskSystem taskSystem = taskGrid.getTaskSystem(i);
+
+            if(taskSystem.getProcessing().equals(task))
+            {
+                return i + 1;
+            }
+        }
+
+        return -1;
     }
 
     private int getResponseTime(Task task)

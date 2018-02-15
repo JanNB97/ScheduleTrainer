@@ -16,7 +16,10 @@ public class TestSchedulingAlgorithm
     {
         ScheduleAlgorithmExecutor executor = new ScheduleAlgorithmExecutor(algorithm);
 
-        Assert.assertEquals(expectedGrid, executor.getTaskGrid());
+        TaskGrid actualGrid = executor.getTaskGrid();
+
+        Assert.assertEquals("Expected:\n" + expectedGrid.toString() + "\n\nActual:\n" + actualGrid.toString(),
+                expectedGrid, actualGrid);
 
         testCalculations(executor, maxWaitTime, maxResponseTime, averageWaitTime, averageTime, averageResponseTime);
     }
@@ -25,12 +28,12 @@ public class TestSchedulingAlgorithm
             int maxWaitTime, int maxResponseTime,
             float averageWaitTime, float averageTime, float averageResponseTime)
     {
+        Assert.assertEquals(maxWaitTime, executor.getMaxWaitTime());
+        Assert.assertEquals(maxResponseTime, executor.getMaxResponseTime());
+
         Assert.assertEquals(roundTwo(averageWaitTime), roundTwo(executor.getAverageWaitTime()));
         Assert.assertEquals(roundTwo(averageTime), roundTwo(executor.getAverageTime()));
         Assert.assertEquals(roundTwo(averageResponseTime), roundTwo(executor.getAverageResponseTime()));
-
-        Assert.assertEquals(maxWaitTime, executor.getMaxWaitTime());
-        Assert.assertEquals(maxResponseTime, executor.getMaxResponseTime());
     }
 
 
