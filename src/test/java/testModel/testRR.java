@@ -2,7 +2,6 @@ package testModel;
 
 import main.ScheduleAlgorithmExecutor;
 import model.schedulingAlgorithms.RR;
-import model.schedulingAlgorithms.SRTF;
 import model.schedulingAlgorithms.SchedulingAlgorithm;
 import model.tasks.Task;
 import model.tasks.TaskGrid;
@@ -41,7 +40,7 @@ public class testRR
                 new TaskSystem(15, C),
                 new TaskSystem(16, C)
 
-        ), 9, 13, 6.33f, 2.67f, 9);
+        ), 9, 13, 5.83f, 2.67f, 8.5f);
     }
 
     @Test
@@ -57,6 +56,6 @@ public class testRR
         SchedulingAlgorithm rr1 = new RR(1, A, B, C, D, E, F);
 
         ScheduleAlgorithmExecutor executor = new ScheduleAlgorithmExecutor(rr1);
-        System.out.println(executor.toString());
+        //System.out.println(executor.toString());
     }
 }

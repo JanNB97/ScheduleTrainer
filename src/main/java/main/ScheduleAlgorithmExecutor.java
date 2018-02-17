@@ -77,28 +77,7 @@ public class ScheduleAlgorithmExecutor
 
     public int getWaitTime(Task task)
     {
-        return getFirstProcessingTime(task) - task.getEintrittszeit() - 1;
-    }
-
-    private int getFirstProcessingTime(Task task)
-    {
-        if(allTasks.contains(task) == false)
-        {
-            Logger.getGlobal().severe("No such task found");
-            return -1;
-        }
-
-        for(int i = task.getEintrittszeit(); i < taskGrid.getAllTaskSystems().size(); i++)
-        {
-            TaskSystem taskSystem = taskGrid.getTaskSystem(i);
-
-            if(taskSystem.getProcessing().equals(task))
-            {
-                return i + 1;
-            }
-        }
-
-        return -1;
+        return getResponseTime(task) - task.getRechenzeit();
     }
 
     private int getResponseTime(Task task)
@@ -165,15 +144,35 @@ public class ScheduleAlgorithmExecutor
         return rMax;
     }
 
-
-
-
-
     //------------------------Getter------------------------
 
     public TaskGrid getTaskGrid()
     {
         return taskGrid;
+    }
+
+    public List<Integer> getAllWaitTimes()
+    {
+        List<Integer> allWaitTimes = new ArrayList<>();
+
+        for(Task task : allTasks)
+        {
+            allWaitTimes.add(getWaitTime(task));
+        }
+
+        return allWaitTimes;
+    }
+
+    public List<Integer> getAllResponseTimes()
+    {
+        List<Integer> allResponseTimes = new ArrayList<>();
+
+        for(Task task : allTasks)
+        {
+            allResponseTimes.add(getResponseTime(task));
+        }
+
+        return allResponseTimes;
     }
 
     //-------------------------Overritten-------------------

@@ -22,6 +22,9 @@ public class TestSchedulingAlgorithm
                 expectedGrid, actualGrid);
 
         testCalculations(executor, maxWaitTime, maxResponseTime, averageWaitTime, averageTime, averageResponseTime);
+
+        System.out.println("All response times:\n\t" + executor.getAllResponseTimes()
+                + "\n\nAll waiting times:\n\t" + executor.getAllWaitTimes());
     }
 
     public static void testCalculations(ScheduleAlgorithmExecutor executor,
