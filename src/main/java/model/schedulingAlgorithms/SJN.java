@@ -8,7 +8,7 @@ public class SJN extends SchedulingAlgorithm
 {
     public SJN(Task... tasks)
     {
-        super("Shortest Job Next", false, tasks);
+        super("SJN", false, tasks);
     }
 
     private void putTaskInQueue(Task task)

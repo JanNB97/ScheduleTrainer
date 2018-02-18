@@ -18,6 +18,11 @@ public class TaskQueue
 
     public Task getNewProcessingTask()
     {
+        if(taskQueue.size() == 0)
+        {
+            return null;
+        }
+
         return taskQueue.remove(0);
     }
 

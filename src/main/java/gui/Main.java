@@ -1,6 +1,7 @@
 package gui;
 
 import gui.controllers.GeneratorController;
+import gui.controllers.SchedulingController;
 import gui.controllers.TaskTableController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

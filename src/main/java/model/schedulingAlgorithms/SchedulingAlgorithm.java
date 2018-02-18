@@ -24,6 +24,11 @@ public abstract class SchedulingAlgorithm
         this.name = name;
         this.withInterupts = withInterupts;
         allTasks = Arrays.asList(tasks);
+
+        for(Task task : allTasks)
+        {
+            task.reset();
+        }
     }
 
     public void doZeitschritt()

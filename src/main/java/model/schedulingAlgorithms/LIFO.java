@@ -8,7 +8,7 @@ public class LIFO extends SchedulingAlgorithm
 {
     public LIFO(Task... tasks)
     {
-        super("Last in, first out", false, tasks);
+        super("LIFO", false, tasks);
     }
 
     private void putTaskInQueue(Task task)

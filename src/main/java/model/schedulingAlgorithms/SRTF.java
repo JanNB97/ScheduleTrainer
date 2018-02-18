@@ -8,7 +8,7 @@ public class SRTF extends SchedulingAlgorithm
 {
     public SRTF(Task... tasks)
     {
-        super("Shortest remaining time first", true, tasks);
+        super("SRTF", true, tasks);
     }
 
     private void putTaskInQueue(Task task)

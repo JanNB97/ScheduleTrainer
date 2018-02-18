@@ -11,7 +11,7 @@ public class RR extends SchedulingAlgorithm
 
     public RR(int zeitscheibe, Task... tasks)
     {
-        super("Round Robin (" + zeitscheibe + ")", true, tasks);
+        super("RR", true, tasks);
 
         this.zeitscheibe = zeitscheibe;
     }

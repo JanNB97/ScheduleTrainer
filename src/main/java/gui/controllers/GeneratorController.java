@@ -4,10 +4,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import main.SchedulingInfoPack;
+import main.SchedulingInfoPackBuilder;
 import main.TaskGenerator;
 import model.tasks.Task;
 
-import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
@@ -24,8 +25,11 @@ public class GeneratorController
 
     private TaskTableController taskTableController;
 
+    private Parent root;
+
     public GeneratorController(Parent root, TaskTableController taskTableController)
     {
+        this.root = root;
         generateButton = (Button)root.lookup("#GenerierenButton");
         minTasksField = (TextField)root.lookup("#MinTasksTextField");
         maxTasksField = (TextField)root.lookup("#MaxTasksTextField");
@@ -75,6 +79,7 @@ public class GeneratorController
                 taskTableController.addColumn(task);
             }
 
+            generate(allTasks);
         } catch (ParseException e) {
 
             Logger.getGlobal().severe("No numbers in textField");
@@ -83,5 +88,11 @@ public class GeneratorController
             alert.setHeaderText("Bitte gebe nur Zahlen in die Textfelder ein.");
             alert.show();
         }
+    }
+
+    private void generate(List<Task> allTasks)
+    {
+        List<SchedulingInfoPack> infoPacks = SchedulingInfoPackBuilder.getSchedulingInfoPacks(allTasks);
+        SchedulingController schedulingController = new SchedulingController(root, taskTableController, infoPacks);
     }
 }

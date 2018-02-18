@@ -61,7 +61,14 @@ public class TaskSystem
     {
         StringBuilder builder = new StringBuilder();
 
-        builder.append(zeitschritt + ":\t" + processing.getID() + " |");
+        if(processing == null)
+        {
+            builder.append(zeitschritt + ":\t- |");
+        }
+        else {
+            builder.append(zeitschritt + ":\t" + processing.getID() + " |");
+        }
+
 
         for(Task task : waiting)
         {

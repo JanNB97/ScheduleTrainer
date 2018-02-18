@@ -10,6 +10,9 @@ public class Task
 
     private int remainingTime;
 
+    private int wartezeit = -1;
+    private int antwortzeit = -1;
+
     public Task(char ID, int eintrittszeit, int rechenzeit, int prioritaet)
     {
         this.ID = ID;
@@ -76,5 +79,25 @@ public class Task
     public int getPrioritaet()
     {
         return prioritaet;
+    }
+
+    public int getWartezeit()
+    {
+        return wartezeit;
+    }
+
+    public void setWartezeit(int wartezeit)
+    {
+        this.wartezeit = wartezeit;
+    }
+
+    public int getAntwortzeit()
+    {
+        return antwortzeit;
+    }
+
+    public void setAntwortzeit(int antwortzeit)
+    {
+        this.antwortzeit = antwortzeit;
     }
 }

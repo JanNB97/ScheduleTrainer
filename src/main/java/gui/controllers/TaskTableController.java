@@ -8,6 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.tasks.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TaskTableController
 {
     private TableView taskTable;
@@ -28,7 +31,13 @@ public class TaskTableController
         TableColumn prioritaetC = new TableColumn("Prioritaet");
         prioritaetC.setCellValueFactory(new PropertyValueFactory<>("prioritaet"));
 
-        taskTable.getColumns().addAll(IDColumn, eintrittsC, rechenzeitC, prioritaetC);
+        TableColumn wartezeitC = new TableColumn("W");
+        wartezeitC.setCellValueFactory(new PropertyValueFactory<>("wartezeit"));
+
+        TableColumn antwortzeitC = new TableColumn("R");
+        antwortzeitC.setCellValueFactory(new PropertyValueFactory<>("antwortzeit"));
+
+        taskTable.getColumns().addAll(IDColumn, eintrittsC, rechenzeitC, prioritaetC, wartezeitC, antwortzeitC);
     }
 
     public void clear()
@@ -39,5 +48,24 @@ public class TaskTableController
     public void addColumn(Task task)
     {
         taskTable.getItems().add(task);
+    }
+
+    public void setWartezeit(int index, int wartezeit)
+    {
+        Task task = (Task)taskTable.getItems().get(index);
+        task.setWartezeit(wartezeit);
+        taskTable.refresh();
+    }
+
+    public void setAntwortzeit(int index, int antwortzeit)
+    {
+        Task task = (Task)taskTable.getItems().get(index);
+        task.setAntwortzeit(antwortzeit);
+        taskTable.refresh();
+    }
+
+    public int size()
+    {
+        return taskTable.getItems().size();
     }
 }

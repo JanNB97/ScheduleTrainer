@@ -91,11 +91,11 @@
                                           <Label text="Durchschnittliche Antwortzeit:" GridPane.rowIndex="2" />
                                           <Label text="Maximale Wartezeit:" GridPane.rowIndex="3" />
                                           <Label text="Maximale Antwortzeit:" GridPane.rowIndex="4" />
-                                          <Label id="AvgWartezeitLabel" text="Label" GridPane.columnIndex="1" />
-                                          <Label id="AvgTaskdauerLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label id="AvgAntwortzeitLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Label id="MaxWartezeitLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <Label id="MaxAntwortzeitLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label id="AvgWartezeitLabel" text="-" GridPane.columnIndex="1" />
+                                          <Label id="AvgTaskdauerLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label id="AvgAntwortzeitLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label id="MaxWartezeitLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label id="MaxAntwortzeitLabel" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                        </children>
                                     </GridPane>
                                     <ChoiceBox id="AlgorithmChooser" layoutX="14.0" layoutY="319.0" prefHeight="28.0" prefWidth="363.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />

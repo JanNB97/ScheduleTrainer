@@ -8,7 +8,7 @@ public class HPF extends SchedulingAlgorithm
 {
     public HPF(Task... tasks)
     {
-        super("Highest Priority First", true, tasks);
+        super("HPF", true, tasks);
     }
 
     private void putTaskInQueue(Task task)

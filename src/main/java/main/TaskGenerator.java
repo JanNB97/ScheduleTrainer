@@ -26,7 +26,7 @@ public class TaskGenerator
         for(int i = 0; i < noOfTasks; i++)
         {
             int eintrittszeit = rand.nextInt(maxEintrittszeit + 1);
-            int rechenzeit = rand.nextInt(maxRechenzeit + 1);
+            int rechenzeit = rand.nextInt(maxRechenzeit) + 1;
             int prioritaet = rand.nextInt(maxPrioritaet + 1);
 
            tasks.add(new Task((char)(i + 65), eintrittszeit, rechenzeit, prioritaet));

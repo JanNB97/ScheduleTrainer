@@ -7,7 +7,7 @@ public class FIFO extends SchedulingAlgorithm
 {
     public FIFO(Task... tasks)
     {
-        super("First in, first out", false, tasks);
+        super("FIFO", false, tasks);
     }
 
     private void putTaskInQueue(Task task)
