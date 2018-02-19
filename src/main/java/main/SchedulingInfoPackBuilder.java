@@ -30,9 +30,9 @@ public class SchedulingInfoPackBuilder
         ScheduleAlgorithmExecutor executor = new ScheduleAlgorithmExecutor(algorithm);
 
         return new SchedulingInfoPack(algorithm.getName(), executor.getTaskGrid(),
-                executor.getAverageWaitTime(), executor.getAverageResponseTime(), executor.getAverageTime(),
-                executor.getMaxWaitTime(), executor.getMaxResponseTime(),
-                executor.getAllWaitTimes(), executor.getAllResponseTimes());
+                executor.getAverageWaitTime(), executor.getAverageResponseTime(), executor.getAverageTime(), executor.getMaxWaitTime()
+                , executor.getMaxResponseTime(),
+                executor.getAllResponseTimes(), executor.getAllWaitTimes());
     }
 
     public static SchedulingInfoPack filter(List<SchedulingInfoPack> allInfoPacks, String algoName)
