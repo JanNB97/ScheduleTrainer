@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import main.SchedulingInfoPack;
 import main.SchedulingInfoPackBuilder;
 import model.tasks.Task;
@@ -15,6 +16,7 @@ public class SchedulingController
 {
     private ChoiceBox schedlingChoiceBox;
     private TaskTableController taskTableController;
+    private SchedulingTableController schedulingTableController;
 
     private List<SchedulingInfoPack> allInfoPacks;
 
@@ -55,6 +57,8 @@ public class SchedulingController
                         }
                     }
                 });
+
+        schedulingTableController = new SchedulingTableController(root);
     }
 
     private void handleChangedItem(String newValue)
@@ -64,6 +68,7 @@ public class SchedulingController
             SchedulingInfoPack infoPack = SchedulingInfoPackBuilder.filter(allInfoPacks, newValue);
             setTaskTable(infoPack);
             setAvgMaxTable(infoPack);
+            schedulingTableController.setTable(infoPack.getTaskGrid());
         }
         else
         {
@@ -104,5 +109,7 @@ public class SchedulingController
 
         maxResponseTime.setText("-");
         maxWaitTime.setText("-");
+
+        schedulingTableController.clear();
     }
 }

@@ -27,7 +27,25 @@ public class TaskGrid
         return allTaskSystems;
     }
 
+    public int size()
+    {
+        return allTaskSystems.size();
+    }
 
+    public int getMaxTasksystemSize()
+    {
+        int max = -1;
+
+        for(TaskSystem taskSystem : allTaskSystems)
+        {
+            if(taskSystem.getAllTaskIDs().size() > max)
+            {
+                max = taskSystem.getAllTaskIDs().size();
+            }
+        }
+
+        return max;
+    }
 
     @Override
     public String toString()
